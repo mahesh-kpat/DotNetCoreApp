@@ -8,9 +8,22 @@ namespace BookStoreApp.Controllers
 {
     public class HomeController : Controller
     {
-        public string Index()
+        public ViewResult Index()
         {
-            return "Hello world";
+            // return View("~/TempView/other.cshtml");
+            return View();
         }
+
+        public ViewResult AboutUs()
+        {
+            return View();
+        }
+
+        public ViewResult ContactUs()
+        {
+            return View();
+        }
+
+
     }
 }

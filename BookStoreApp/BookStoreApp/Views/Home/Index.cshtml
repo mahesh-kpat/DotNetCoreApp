@@ -1,0 +1,73 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/Style.css" rel="stylesheet" />
+</head>
+<body class="container">
+    <h1 class="h1">Welcome to Bookstore Application</h1>
+    <input type="button" class="btn btn-danger" value="click me" />
+    @*@{
+        int a = 10;
+    }
+
+    @if (a == 10)
+    {
+        a++;
+        <h1>Hello from If block - @a</h1>
+    }
+    else
+    {
+        <h1>Hello from else block</h1>
+    }
+
+    @{
+        var list = new List<int>() { 1,2,3,4,5};
+    }
+
+    @for (int i = 0; i < 10; i++)
+    {
+        <h1>Value of I is @i</h1>
+    }
+
+    @foreach (var item in list)
+    {
+        <h2>Value of Item - @item</h2>
+    }*@
+
+
+<img src="~/Images/ok.png" alt="logo"  class="logo"/>
+
+<img src="~/StaticFiles/home.png" alt="home logo" />
+
+<script src="~/lib/jquery/jquery.js"></script>
+
+
+    @*<p>This is the home page of bookstore application</p>
+        <h2>@DateTime.Now.ToString()</h2>
+
+        @{
+            int num1 = 19;
+            int num2 = 20;
+            int sum = num1 + num2;
+        }
+
+        <p>sum of two numbers is @sum</p>
+        <p>Twitter - @@gmail.com</p>*@
+</body>
+</html>
+
+
+<script>
+    $(document).ready(function () {
+        alert('page loaded');
+    })
+</script>

@@ -1,16 +1,23 @@
-﻿
-@{
-    Layout = null;
+﻿@{ 
+
+    ViewData["Title"] = "About Us";
+    var book = ViewData["Book"] as BookModel;
 }
+ 
 
-<!DOCTYPE html>
+<h2>This is the about us PAGE</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>AboutUs</title>
-</head>
-<body>
-    <h2>This is the about us PAGE</h2>
-</body>
-</html>
+@ViewData["Name"]
+@book.Id
+@book.Title
+
+@section breadcrumb{
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Page 1</a></li>
+            <li class="breadcrumb-item-active"><a href="#" aria-current="page">Page 2</a></li>
+        </ol>
+    </nav>
+
+}

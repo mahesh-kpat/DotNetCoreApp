@@ -1,0 +1,76 @@
+﻿@using Microsoft.Extensions.Options; 
+@inject  IConfiguration _configuration;
+@inject IOptionsSnapshot<NewBookAlertConfig> _newBookAlertConfiguration
+@{ 
+    var bookConfig = _newBookAlertConfiguration.Value;
+}
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+
+            <img src="~/Images/ok.png" width="30" height="30" asp-append-version="true" />
+
+        </a>
+        @_configuration["AppName"]
+
+        @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>*@
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Home" asp-action="AboutUs">About us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Home" asp-action="ContactUs">Contact us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Book" asp-action="GetAllBooks">All Books</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Book" asp-action="AddNewBook">Add New Book</a>
+            </li>
+
+            @*<li class="nav-item">
+                <a class="nav-link" asp-protocol="https" asp-host="www.google.com" asp-controller="Book"
+                   asp-action="GetAllBooks">New Link</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>*@
+
+        </ul>
+        <ul class="navbar-nav">
+           <partial name="_LoginInfo" /> 
+        </ul>
+
+    </div>
+    </nav>
+
+    @if (bookConfig.DisplayNewBookAlert)
+    {
+        <div class="alert alert-info" role="alert">
+           @bookConfig.BookName
+        </div>
+    }
+
+
+
+</header>

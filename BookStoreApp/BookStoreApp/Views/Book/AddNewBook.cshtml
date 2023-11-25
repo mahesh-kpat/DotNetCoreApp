@@ -1,0 +1,135 @@
+﻿@using BookStoreApp.Enum;
+@inject ILanguageRepository _langRepo;
+@model BookModel
+@{
+    ViewData["Title"] = "AddNewBook";
+}
+
+ 
+<div class="container">
+    <h3 class="display-4">Add New Book</h3> <hr />
+    @if (ViewBag.IsSuccess == true)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Congratulations</strong> You have added new book successfully<br />
+            Click <a asp-controller="Book" asp-action="GetBook" asp-route-id="@ViewBag.BookId">here</a> to view details
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+    }
+
+
+    @*<div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status"  id="myLoader" style="display:none;">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>*@
+
+
+    @*Uncomment to add in the form tag for ajax*@
+    @*data-ajax="true" data-ajax-complete="myComplete"
+    data-ajax-success="mySuccess" data-ajax-failure="myFailure"
+    data-ajax-loading="#myLoader"*@
+
+
+<form method="post" enctype="multipart/form-data"
+      asp-action="AddNewBook" asp-controller="Book">
+
+
+
+    <div class="form-group">
+        <label asp-for="LanguageId"></label>
+        <select asp-for="LanguageId" class="form-control" asp-items="(await _langRepo.GetLanguages()).Select(x=> new SelectListItem() {Text = x.Name, Value = x.Id.ToString() })">
+            <option value="">Please choose your language</option>
+        </select>
+        <span asp-validation-for="LanguageId" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+
+        <label asp-for="Author"></label>
+        <input asp-for="Author" class="form-control" />
+        <span asp-validation-for="Author" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+
+        <label asp-for="TotalPages"></label>
+        <input asp-for="TotalPages" class="form-control" />
+        <span asp-validation-for="TotalPages" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="CoverPhoto"></label>
+
+        <div class="custom-file">
+            <input asp-for="CoverPhoto" class="custom-file-input" id="customFile">
+            <label class="custom-file-label" for="customFile">Choose file</label>
+        </div>
+        <span asp-validation-for="CoverPhoto" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="GalleryFiles"></label>
+
+        <div class="custom-file">
+            <input asp-for="GalleryFiles" class="custom-file-input" id="customFile">
+            <label class="custom-file-label" for="customFile">Choose file</label>
+        </div>
+        <span asp-validation-for="GalleryFiles" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="BookPdf"></label>
+
+        <div class="custom-file">
+            <input asp-for="BookPdf" class="custom-file-input" id="customFile">
+            <label class="custom-file-label" for="customFile">Choose file</label>
+        </div>
+        <span asp-validation-for="BookPdf" class="text-danger"></span>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <input type="submit" value="Add Book" class="btn btn-primary" />
+    </div>
+
+</form>
+
+</div> 
+
+@*@section scripts {
+    <script>
+        function myComplete(data) {
+            alert('i m from complete');
+            console.log(data);
+        }
+        function mySuccess(data) {
+            alert('i m from success');
+            console.log(data);
+        }
+        function myFailure(data) {
+            alert('i m from failure');
+            console.log(data);
+        }
+    </script>
+
+}*@
